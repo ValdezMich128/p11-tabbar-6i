@@ -1,43 +1,89 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(AppMiTabBar());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
+class AppMiTabBar extends StatelessWidget {
+  const AppMiTabBar({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+      debugShowCheckedModeBanner: false,
+      title: "Ejemplo Tabbar America Valdez",
       theme: ThemeData(
-        // useMaterial3: true,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MiPaginaInicial(),
     );
   }
-}
+} // fin de mi AppMiTapBar
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
+//statefull
+class MiPaginaInicial extends StatefulWidget {
+  const MiPaginaInicial({Key? key}) : super(key: key);
 
   @override
+  State<MiPaginaInicial> createState() => _MiPaginaInicialState();
+} //MiPaginaInicial
+
+class _MiPaginaInicialState extends State<MiPaginaInicial> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("TabBar America Valdez"),
+          centerTitle: true,
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                text: "Hoddie",
+                icon: Icon(Icons.access_time),
+              ),
+              Tab(
+                text: "Playeras",
+                icon: Icon(Icons.account_circle),
+              ),
+              Tab(
+                text: "Gorros",
+                icon: Icon(Icons.ad_units_sharp),
+              ),
+              Tab(
+                text: "Shorts",
+                icon: Icon(Icons.scanner_sharp),
+              ),
+            ], //fin de tab
+          ), // fin botton Tabbar
         ),
-      ),
-    );
-  }
-}
+        body: TabBarView(children: const <Widget>[
+          Center(
+            child: Text(
+              "Junior H Animado",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+          ),
+          Center(
+            child: Text(
+              "Playeras Canciones",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+          ),
+          Center(
+            child: Text(
+              "Corazones",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+          ),
+          Center(
+            child: Text(
+              "Emojis Tris",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+          ),
+        ] //jardin de niños
+            ), //fin de tapbbarview
+      ), //fin de
+    ); //DefaultTabController
+  } //fin widgets
+} //_MiPaginaInicialState
